@@ -28,46 +28,10 @@ public class DragaoController {
         return _dragaoRepository.findAll();
     }
 
-    @RequestMapping(value = "/dragao/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Dragao> GetById(@PathVariable(value = "id") long id)
-    {
-        Optional<Dragao> pessoa = _dragaoRepository.findById(id);
-        if(pessoa.isPresent())
-            return new ResponseEntity<Dragao>(pessoa.get(), HttpStatus.OK);
-        else
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
-
     @RequestMapping(value = "/dragao", method =  RequestMethod.POST)
-    public Dragao Post(@Valid @RequestBody Dragao pessoa)
+    public Dragao Post(@Valid @RequestBody Dragao drago)
     {
-        return _dragaoRepository.save(pessoa);
-    }
-
-    @RequestMapping(value = "/dragao/{id}", method =  RequestMethod.PUT)
-    public ResponseEntity<Dragao> Put(@PathVariable(value = "id") long id, @Valid @RequestBody Dragao newPessoa)
-    {
-        Optional<Dragao> oldPessoa = _dragaoRepository.findById(id);
-        if(oldPessoa.isPresent()){
-        	Dragao pessoa = oldPessoa.get();
-             pessoa.setName(newPessoa.getName());
-             _dragaoRepository.save(pessoa);
-             return new ResponseEntity<Dragao>(pessoa, HttpStatus.OK);
-        }
-        else
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
-
-    @RequestMapping(value = "/dragao/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<Object> Delete(@PathVariable(value = "id") long id)
-    {
-        Optional<Dragao> pessoa = _dragaoRepository.findById(id);
-        if(pessoa.isPresent()){
-            _dragaoRepository.delete(pessoa.get());
-            return new ResponseEntity<>(HttpStatus.OK);
-        }
-        else
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return _dragaoRepository.save(drago);
     }
     
 }
