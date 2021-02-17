@@ -12,12 +12,16 @@ import javax.persistence.Table;
 
 public class Dragao  {
 	
-	@Column(nullable = false)
+	@Column
 	private String name;
+	
 	@Column(nullable = false)
 	private String type;
+	
+	@Column
 	private Date createdAt;
-	@Column(nullable = false)
+	
+	@Column
 	@Id
 	private Long id;
 	
