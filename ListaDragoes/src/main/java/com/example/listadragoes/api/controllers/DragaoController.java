@@ -28,14 +28,14 @@ public class DragaoController {
 private DragaoRepository dragaoRepository;
 
 @PostMapping(path="/add") // Map ONLY POST Requests
-public @ResponseBody String addNewUser (String name
- ,String email) {
+public @ResponseBody String addNewUser (@RequestParam String name
+  ,@RequestParam String type) {
 // @ResponseBody means the returned String is the response, not a view name
 // @RequestParam means it is a parameter from the GET or POST request
 
 Dragao n = new Dragao();
 n.setName(name);
-n.setType(email);
+n.setType(type);
 dragaoRepository.save(n);
 return "Saved";
 }
