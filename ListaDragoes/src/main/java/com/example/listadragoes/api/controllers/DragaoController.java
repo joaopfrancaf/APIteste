@@ -29,7 +29,7 @@ private DragaoRepository dragaoRepository;
 
 @PostMapping(path="/add") // Map ONLY POST Requests
 public @ResponseBody String addNewUser (@RequestParam String name
-  ,@RequestParam String type) {
+	      , @RequestParam String type) {
 // @ResponseBody means the returned String is the response, not a view name
 // @RequestParam means it is a parameter from the GET or POST request
 
@@ -37,7 +37,7 @@ Dragao n = new Dragao();
 n.setName(name);
 n.setType(type);
 dragaoRepository.save(n);
-return "Saved";
+return "Saved funfo";
 }
 
 @GetMapping(path="/all")
@@ -45,4 +45,5 @@ public @ResponseBody Iterable<Dragao> getAllUsers() {
 // This returns a JSON or XML with the users
 return dragaoRepository.findAll();
 }
+
 }

@@ -15,7 +15,7 @@ public class Dragao  {
 	@Column
 	private String name;
 	
-	@Column(nullable = false)
+	@Column
 	private String type;
 	
 	@Column
